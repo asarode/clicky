@@ -26,7 +26,7 @@ export const deactivateMultiplier = () => ({
 
 const initialState = I.fromJS({
   score: 0,
-  increment: 10,
+  increment: 1,
   multiplier: 1
 })
 

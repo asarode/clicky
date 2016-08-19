@@ -10,7 +10,7 @@ describe('Score Reducer', () => {
   it('increases the score', () => {
     const state = scoreReducer(undefined, increaseScore())
     const actualScore = state.get('score')
-    const expectedScore = 10
+    const expectedScore = 1
 
     expect(actualScore).to.equal(expectedScore)
   })
@@ -19,7 +19,7 @@ describe('Score Reducer', () => {
     const state = [activateMultiplier(), increaseScore()]
       .reduce(scoreReducer, undefined)
     const actualScore = state.get('score')
-    const expectedScore = 20
+    const expectedScore = 2
 
     expect(actualScore).to.equal(expectedScore)
   })
@@ -28,7 +28,7 @@ describe('Score Reducer', () => {
     const state = [activateMultiplier(3), increaseScore()]
       .reduce(scoreReducer, undefined)
     const actualScore = state.get('score')
-    const expectedScore = 30
+    const expectedScore = 3
 
     expect(actualScore).to.equal(expectedScore)
   })
@@ -40,7 +40,7 @@ describe('Score Reducer', () => {
       increaseScore()
     ].reduce(scoreReducer, undefined)
     const actualScore = state.get('score')
-    const expectedScore = 10
+    const expectedScore = 1
 
     expect(actualScore).to.equal(expectedScore)
   })

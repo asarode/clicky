@@ -17,6 +17,7 @@
     "prepush": "npm run lint && npm run test"
   },
   "standard": {
+    "parser": "babel-eslint",
     "globals": [
       "describe",
       "it"
@@ -34,6 +35,7 @@
   "homepage": "https://github.com/Bootleg-Cashew-Butter/chatter-chain#readme",
   "devDependencies": {
     "babel-core": "^6.8.0",
+    "babel-eslint": "^6.1.2",
     "babel-loader": "^6.2.4",
     "babel-plugin-react-transform": "^2.0.2",
     "babel-plugin-transform-decorators-legacy": "^1.3.4",
