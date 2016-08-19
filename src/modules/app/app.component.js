@@ -4,6 +4,7 @@ import { connect } from 'react-redux'
 import { ClickPiece } from 'modules/click-piece'
 import { LevelBadge } from 'modules/level-badge'
 import { ScoreDisplay } from 'modules/score-display'
+import { NextLevelIndicator } from 'modules/next-level-indicator'
 import {
   mapState as mapScoreState,
   increaseScore,
@@ -28,6 +29,9 @@ export default class App extends Component {
   render () {
     return <div>
       <LevelBadge currentLevel={this.props.score.currentLevel} />
+      <NextLevelIndicator
+        score={this.props.score.score}
+        scoreForNextLevel={this.props.score.scoreForNextLevel} />
       <ScoreDisplay score={this.props.score.score} />
       <ClickPiece onClick={this.props.actions.increaseScore} />
     </div>

@@ -60,10 +60,8 @@ describe('Score Reducer', () => {
   })
 
   it('computes next level', () => {
-    {
-      const { scoreForNextLevel } = mapState(scoreReducer())
-      const expectedScore = 25
-      expect(scoreForNextLevel).to.equal(expectedScore)
-    }
+    const { scoreForNextLevel } = mapState(scoreReducer())
+    const expectedScore = 25
+    expect(scoreForNextLevel).to.equal(expectedScore)
   })
 })

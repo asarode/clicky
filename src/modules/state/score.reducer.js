@@ -43,9 +43,7 @@ const calcCurrentLevel = (score) => {
   return isNaN(maybeLevel) ? 1 : Math.max(maybeLevel, 1)
 }
 
-const getScoreAtLevel = (level) => Math.round(Math.exp((level - B) / A) - C)
-const calcScoreForNextLevel = (currentLevel) =>
-  getScoreAtLevel(currentLevel + 1) - getScoreAtLevel(currentLevel)
+const getScoreAtLevel = (level) => Math.ceil(Math.exp((level - B) / A) - C)
 
 export const mapState = (state) => {
   const score = state.get('score')
@@ -53,7 +51,7 @@ export const mapState = (state) => {
   return {
     score,
     currentLevel,
-    scoreForNextLevel: calcScoreForNextLevel(currentLevel)
+    scoreForNextLevel: getScoreAtLevel(currentLevel + 1)
   }
 }
 
