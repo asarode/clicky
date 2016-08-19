@@ -48,8 +48,6 @@ var config = {
       },
       {
         test: /\.styl$/,
-        // Imporing .styl in components causes problems when running tests,
-        // so use the css/locals loader instead
         loader: isTest
           ? 'css/locals?modules&importLoaders=1&localIdentName=[name]__[local]___[hash:base64:5]!stylus-loader'
           : 'style-loader!css?modules&importLoaders=1&localIdentName=[name]__[local]___[hash:base64:5]!stylus-loader',

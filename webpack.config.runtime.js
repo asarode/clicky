@@ -1,0 +1,17 @@
+module.exports = {
+  output: {
+    libraryTarget: 'commonjs2'
+  },
+  module: {
+    loaders: [
+      {
+        test: /\.styl$/,
+        loaders: [
+          'style-loader',
+          'css-loader?modules&importLoaders=1&localIdentName=[name]__[local]--[hash:base64:5]',
+          'stylus-loader'
+        ]
+      }
+    ]
+  }
+}
