@@ -2,7 +2,8 @@ import { expect } from 'chai'
 import scoreReducer, {
   increaseScore,
   activateMultiplier,
-  deactivateMultiplier
+  deactivateMultiplier,
+  mapState
 } from './score.reducer'
 
 describe('Score Reducer', () => {
@@ -42,5 +43,27 @@ describe('Score Reducer', () => {
     const expectedScore = 10
 
     expect(actualScore).to.equal(expectedScore)
+  })
+
+  it('computes current level', () => {
+    {
+      const { currentLevel } = mapState(scoreReducer())
+      const expectedLevel = 1
+      expect(currentLevel).to.equal(expectedLevel)
+    }
+
+    {
+      const { currentLevel } = mapState(scoreReducer().set('score', 5000))
+      const expectedLevel = 28
+      expect(currentLevel).to.equal(expectedLevel)
+    }
+  })
+
+  it('computes next level', () => {
+    {
+      const { scoreForNextLevel } = mapState(scoreReducer())
+      const expectedScore = 25
+      expect(scoreForNextLevel).to.equal(expectedScore)
+    }
   })
 })

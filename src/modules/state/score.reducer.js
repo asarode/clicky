@@ -30,18 +30,34 @@ const initialState = I.fromJS({
   multiplier: 1
 })
 
-// Export function to map state to specific state slices. In this case, the
-// function is simple, but it's a great place to put logic for calculating
-// computed properties. This allows the UI to use parts of the state without
-// having to know the state shape OR know anything about ImmutableJS. In a
-// production app, I'd use something like the reselect library that auto-memoizes
-// these mappings so you don't recompute them if the state fields haven't
-// changed. Decoupling ftw!
-export const mapState = (state) => ({
-  score: state.get('score')
-})
+// Magic constants for the logarithmic leveling. Chose these constants to make
+// earlier levels take a lower score, so you don't go insane trying to test the
+// app :)
+// Formula from http://gamedev.stackexchange.com/a/55158/89475
+const A = 8.2
+const B = -42
+const C = Math.exp((1 - B) / A)
 
-const score = (state = initialState, action) => {
+const calcCurrentLevel = (score) => {
+  const maybeLevel = Math.floor(A * Math.log(score + C) + B)
+  return isNaN(maybeLevel) ? 1 : Math.max(maybeLevel, 1)
+}
+
+const getScoreAtLevel = (level) => Math.round(Math.exp((level - B) / A) - C)
+const calcScoreForNextLevel = (currentLevel) =>
+  getScoreAtLevel(currentLevel + 1) - getScoreAtLevel(currentLevel)
+
+export const mapState = (state) => {
+  const score = state.get('score')
+  const currentLevel = calcCurrentLevel(score)
+  return {
+    score,
+    currentLevel,
+    scoreForNextLevel: calcScoreForNextLevel(currentLevel)
+  }
+}
+
+const score = (state = initialState, action = {}) => {
   switch (action.type) {
     case INCREASE_SCORE:
       return state.update('score', (score) =>
