@@ -1,3 +1,4 @@
+import 'babel-polyfill'
 import { jsdom } from 'jsdom'
 
 let exposedProperties = ['window', 'navigator', 'document']

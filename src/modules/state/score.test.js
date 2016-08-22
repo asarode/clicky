@@ -2,7 +2,8 @@ import { expect } from 'chai'
 import scoreReducer, {
   increaseScore,
   activateMultiplier,
-  deactivateMultiplier,
+  showMultiplier,
+  hideMultiplier,
   mapState
 } from './score.reducer'
 
@@ -33,16 +34,28 @@ describe('Score Reducer', () => {
     expect(actualScore).to.equal(expectedScore)
   })
 
-  it('removes a multiplier', () => {
+  it('shows a multiplier', () => {
+    const state = scoreReducer(undefined, showMultiplier())
+    const actualMultiplierVisibility = state.get('isMultiplierVisible')
+    const expectedMultiplierVisibility = true
+
+    expect(actualMultiplierVisibility).to.equal(expectedMultiplierVisibility)
+  })
+
+  it('hides and removes a multiplier', () => {
     const state = [
+      showMultiplier(),
       activateMultiplier(),
-      deactivateMultiplier(),
+      hideMultiplier(),
       increaseScore()
     ].reduce(scoreReducer, undefined)
     const actualScore = state.get('score')
     const expectedScore = 1
-
     expect(actualScore).to.equal(expectedScore)
+
+    const actualMultiplierVisibility = state.get('isMultiplierVisible')
+    const expectedMultiplierVisibility = false
+    expect(actualMultiplierVisibility).to.equal(expectedMultiplierVisibility)
   })
 
   it('computes current level', () => {

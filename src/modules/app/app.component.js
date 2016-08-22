@@ -5,11 +5,13 @@ import { ClickPiece } from 'modules/click-piece'
 import { LevelBadge } from 'modules/level-badge'
 import { ScoreDisplay } from 'modules/score-display'
 import { NextLevelIndicator } from 'modules/next-level-indicator'
+import { MultiplierWidget } from 'modules/multiplier-widget'
 import {
   mapState as mapScoreState,
   increaseScore,
   activateMultiplier,
-  deactivateMultiplier
+  showMultiplier,
+  hideMultiplier
 } from 'modules/state/score.reducer'
 
 const mapStateToProps = (state) => ({
@@ -20,7 +22,8 @@ const mapDispatchToProps = (dispatch) => ({
   actions: bindActionCreators({
     increaseScore,
     activateMultiplier,
-    deactivateMultiplier
+    showMultiplier,
+    hideMultiplier
   }, dispatch)
 })
 
@@ -34,6 +37,13 @@ export default class App extends Component {
         scoreForNextLevel={this.props.score.scoreForNextLevel} />
       <ScoreDisplay score={this.props.score.score} />
       <ClickPiece onClick={this.props.actions.increaseScore} />
+      { this.props.score.isMultiplierVisible &&
+        <MultiplierWidget
+          isActive={this.props.score.isMultiplierActive}
+          multiplier={this.props.score.multiplier}
+          activateAction={this.props.actions.activateMultiplier}
+          hideAction={this.props.actions.hideMultiplier} />
+      }
     </div>
   }
 }
