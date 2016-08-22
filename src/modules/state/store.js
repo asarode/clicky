@@ -12,10 +12,15 @@ export const rootReducer = combineReducers({
 
 const sagaMiddleware = createSagaMiddleware()
 const logger = createLogger()
+
+const middleware = process.env.NODE_ENV === 'production'
+  ? [sagaMiddleware]
+  : [sagaMiddleware, logger]
+
 const store = createStore(
   rootReducer,
   loadState(rootReducer),
-  applyMiddleware(sagaMiddleware, logger)
+  applyMiddleware(...middleware)
 )
 sagaMiddleware.run(rootSaga)
 
