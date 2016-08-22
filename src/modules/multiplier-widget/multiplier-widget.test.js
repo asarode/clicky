@@ -24,7 +24,7 @@ describe('MultiplierWidget Component', () => {
     const activateSpy = sinon.spy()
     const wrapper = shallow(
       <MultiplierWidget
-        isActive={true}
+        isActive
         multiplier={2}
         activateAction={activateSpy}
         hideAction={() => {}}

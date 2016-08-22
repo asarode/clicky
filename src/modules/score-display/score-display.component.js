@@ -17,10 +17,11 @@ export default class ScoreDisplay extends PureComponent {
     const scoreClasses = cx(
       this.props.className,
       style.scoreText, {
-      [style.multiplierActive]: this.props.isMultiplierActive
-    })
+        [style.multiplierActive]: this.props.isMultiplierActive
+      }
+    )
     return <div className={scoreClasses}>
-      { this.props.score }
+      {this.props.score}
     </div>
   }
 }

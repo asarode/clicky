@@ -2,7 +2,6 @@ import React, { Component, PropTypes as P } from 'react'
 import cx from 'classnames'
 import { style } from '.'
 
-
 export default class LevelBadge extends Component {
   static propTypes = {
     currentLevel: P.number.isRequired,
@@ -25,7 +24,7 @@ export default class LevelBadge extends Component {
       <span className={style.label}>lvl</span>
       <span className={style.level}>
         <span
-          ref={(c) => this.animateEl = c}
+          ref={(c) => { this.animateEl = c }}
           className={levelAnimationClass}>
           {this.props.currentLevel}
         </span>

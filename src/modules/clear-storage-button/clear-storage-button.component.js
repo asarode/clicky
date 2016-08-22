@@ -1,5 +1,4 @@
-import React, { Component, PropTypes as P } from 'react'
-import cx from 'classnames'
+import React, { Component } from 'react'
 import { clearStorage } from 'modules/storage'
 import { style } from '.'
 
@@ -19,7 +18,7 @@ export default class ClearStorageButton extends Component {
     return <button
       className={style.clearButton}
       onClick={() => this.onClearStorage()}>
-      { clearStorageMessage }
+      {clearStorageMessage}
     </button>
   }
 

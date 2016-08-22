@@ -21,13 +21,13 @@ export default class MultiplierWidget extends PureComponent {
     let displayElement
     if (this.props.isActive) {
       displayElement = <div className={`${this.props.className} ${style.notifier}`}>
-        { `${this.props.multiplier}X boost!` }
+        {`${this.props.multiplier}X boost!`}
       </div>
     } else {
       displayElement = <div
         onClick={() => this.props.activateAction(multiplier)}
         className={`${this.props.className} ${style.multiplier}`}>
-        { `Click for ${multiplier}X` }
+        {`Click for ${multiplier}X`}
       </div>
     }
 
@@ -36,11 +36,11 @@ export default class MultiplierWidget extends PureComponent {
         appear: style.appear,
         appearActive: style.appearActive
       }}
-      transitionAppear={true}
+      transitionAppear
       transitionEnter={false}
       transitionLeave={false}
       transitionAppearTimeout={250}>
-      { displayElement }
+      {displayElement}
     </ReactCSSTransitionGroup>
   }
 }

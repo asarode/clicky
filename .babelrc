@@ -1,13 +1,13 @@
 {
   "presets": ["es2015", "stage-0", "react"],
+  "plugins": ["transform-decorators-legacy"],
   "env": {
     "test": {
       "plugins": [
-        "transform-decorators-legacy",
         [
           "babel-plugin-webpack-loaders",
           {
-            "config": "./webpack.config.runtime.js",
+            "config": "./config/webpack.config.runtime.js",
             "verbose": false
           }
         ],
@@ -21,7 +21,6 @@
     "development": {
       "plugins": [
         "transform-runtime",
-        "transform-decorators-legacy",
         ["react-transform", {
           "transforms": [{
             "transform" : "react-transform-hmr",

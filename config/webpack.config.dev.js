@@ -1,7 +1,6 @@
 var webpack = require('webpack')
 var path = require('path')
 
-var isTest = process.env.NODE_ENV === 'test'
 var PORT = 5050
 
 var config = {
@@ -12,13 +11,13 @@ var config = {
     './src/index'
   ],
   output: {
-    path: path.join(__dirname, 'dist'),
+    path: path.join(process.cwd(), 'dist'),
     filename: 'bundle.js',
     publicPath: '/dist/'
   },
   resolve: {
     root: [
-      path.resolve(__dirname, './src')
+      path.resolve(process.cwd(), './src')
     ],
     extensions: ['', '.js']
   },
@@ -37,32 +36,24 @@ var config = {
       {
         test: /\.jsx?$/,
         loaders: ['babel'],
-        include: path.join(__dirname, '/src')
+        include: path.join(process.cwd(), '/src')
       },
       {
         test: /\.css$/,
-        loader: isTest
-          ? 'css/locals?modules&importLoaders=1&localIdentName=[name]__[local]___[hash:base64:5]'
-          : 'style-loader!css?modules&importLoaders=1&localIdentName=[name]__[local]___[hash:base64:5]',
-        include: path.join(__dirname, '/src')
+        loader: 'style-loader!css?modules&importLoaders=1&localIdentName=[name]__[local]___[hash:base64:5]',
+        include: path.join(process.cwd(), '/src')
       },
       {
         test: /\.styl$/,
-        loader: isTest
-          ? 'css/locals?modules&importLoaders=1&localIdentName=[name]__[local]___[hash:base64:5]!stylus-loader'
-          : 'style-loader!css?modules&importLoaders=1&localIdentName=[name]__[local]___[hash:base64:5]!stylus-loader',
-        include: path.join(__dirname, '/src')
+        loader: 'style-loader!css?modules&importLoaders=1&localIdentName=[name]__[local]___[hash:base64:5]!stylus-loader',
+        include: path.join(process.cwd(), '/src')
       },
       {
         test: /\.(png|jpg)$/, loader: 'url-loader?limit=8192',
-        include: path.join(__dirname, '/src')
+        include: path.join(process.cwd(), '/src')
       }
     ]
   }
-}
-
-if (isTest) {
-  config.target = 'node'
 }
 
 module.exports = config

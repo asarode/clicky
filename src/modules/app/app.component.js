@@ -49,7 +49,7 @@ export default class App extends Component {
       <ClickPiece
         onClick={this.props.actions.increaseScore}
         className={style.row} />
-      { this.props.score.isMultiplierVisible &&
+      {this.props.score.isMultiplierVisible &&
         <MultiplierWidget
           isActive={this.props.score.isMultiplierActive}
           multiplier={this.props.score.multiplier}

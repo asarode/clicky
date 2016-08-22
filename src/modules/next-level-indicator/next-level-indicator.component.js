@@ -43,7 +43,7 @@ export default class LevelBadge extends Component {
       </div>
       <div
         className={meterClasses}
-        ref={(c) => this.animateEl = c}>
+        ref={(c) => { this.animateEl = c }}>
         {
           Array(50).fill(1).map(mapMeterTicks(50))
         }
@@ -76,5 +76,4 @@ export default class LevelBadge extends Component {
 
     return pointsEarned / totalPointsNeeded
   }
-
 }
