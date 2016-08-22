@@ -10,6 +10,11 @@
             "config": "./webpack.config.runtime.js",
             "verbose": false
           }
+        ],
+        [
+          "module-resolver", {
+            "root": ["./src"]
+          }
         ]
       ]
     },

@@ -6,6 +6,7 @@ import { LevelBadge } from 'modules/level-badge'
 import { ScoreDisplay } from 'modules/score-display'
 import { NextLevelIndicator } from 'modules/next-level-indicator'
 import { MultiplierWidget } from 'modules/multiplier-widget'
+import { ClearStorageButton } from 'modules/clear-storage-button'
 import {
   mapState as mapScoreState,
   increaseScore,
@@ -32,6 +33,7 @@ const mapDispatchToProps = (dispatch) => ({
 export default class App extends Component {
   render () {
     return <div className={style.app}>
+      <ClearStorageButton />
       <LevelBadge
         currentLevel={this.props.score.currentLevel}
         className={style.row} />

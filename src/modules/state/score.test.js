@@ -6,6 +6,7 @@ import scoreReducer, {
   hideMultiplier,
   mapState
 } from './score.reducer'
+import { LOAD_STATE } from 'modules/storage'
 
 describe('Score Reducer', () => {
   it('increases the score', () => {
@@ -76,5 +77,15 @@ describe('Score Reducer', () => {
     const { scoreForNextLevel } = mapState(scoreReducer())
     const expectedScore = 25
     expect(scoreForNextLevel).to.equal(expectedScore)
+  })
+
+  it('disables multiplier when loading state', () => {
+    const muliplierActiveState = scoreReducer(undefined)
+      .set('multiplier', 2)
+      .set('isMultiplierVisible', true)
+    const state = scoreReducer(muliplierActiveState, { type: LOAD_STATE })
+
+    expect(state.get('multiplier')).to.equal(1)
+    expect(state.get('isMultiplierVisible')).to.equal(false)
   })
 })

@@ -3,6 +3,7 @@
 // updates more efficient and the API is nicer to work with if you have nested
 // state trees.
 import I from 'immutable'
+import { LOAD_STATE } from 'modules/storage'
 
 // Could use a `Symbol` to avoid action type namespace conflicts, but I prefer
 // strings because they're easier to serialize and the namespace conflict hasn'the
@@ -81,6 +82,11 @@ const score = (state = initialState, action = {}) => {
 
     case ACTIVATE_MULTIPLIER:
       return state.set('multiplier', action.payload.multiplier)
+
+    case LOAD_STATE:
+      return state
+        .set('multiplier', initialState.get('multiplier'))
+        .set('isMultiplierVisible', false)
 
     default:
       return state
