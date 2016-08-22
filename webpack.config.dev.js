@@ -54,7 +54,8 @@ var config = {
         include: path.join(__dirname, '/src')
       },
       {
-        test: /\.(png|jpg)$/, loader: 'url-loader?limit=8192'
+        test: /\.(png|jpg)$/, loader: 'url-loader?limit=8192',
+        include: path.join(__dirname, '/src')
       }
     ]
   }

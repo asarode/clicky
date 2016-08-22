@@ -10,10 +10,12 @@ describe('MultiplierWidget Component', () => {
     const wrapper = shallow(
       <MultiplierWidget
         isActive={false}
+        multiplier={1}
         activateAction={activateSpy}
-        hideAction={() => {}} />
+        hideAction={() => {}}
+        className='dummy' />
     )
-    wrapper.simulate('click')
+    wrapper.find('.dummy').simulate('click')
 
     expect(activateSpy.callCount).to.equal(1)
   })
@@ -23,10 +25,12 @@ describe('MultiplierWidget Component', () => {
     const wrapper = shallow(
       <MultiplierWidget
         isActive={true}
+        multiplier={2}
         activateAction={activateSpy}
-        hideAction={() => {}} />
+        hideAction={() => {}}
+        className='dummy' />
     )
-    wrapper.simulate('click')
+    wrapper.find('.dummy').simulate('click')
 
     expect(activateSpy.callCount).to.equal(0)
   })

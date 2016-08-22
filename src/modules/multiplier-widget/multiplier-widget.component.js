@@ -37,6 +37,8 @@ export default class MultiplierWidget extends PureComponent {
         appearActive: style.appearActive
       }}
       transitionAppear={true}
+      transitionEnter={false}
+      transitionLeave={false}
       transitionAppearTimeout={250}>
       { displayElement }
     </ReactCSSTransitionGroup>
