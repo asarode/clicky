@@ -1,3 +1,4 @@
 import App from './app.component'
+import style from './app.styl'
 
-export { App }
+export { App, style }

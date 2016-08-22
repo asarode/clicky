@@ -57,6 +57,7 @@ export const mapState = (state) => {
   return {
     score,
     currentLevel,
+    scoreForCurrentLevel: getScoreAtLevel(currentLevel),
     scoreForNextLevel: getScoreAtLevel(currentLevel + 1),
     isMultiplierVisible: state.get('isMultiplierVisible'),
     multiplier: state.get('multiplier'),

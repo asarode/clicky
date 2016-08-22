@@ -52,6 +52,9 @@ var config = {
           ? 'css/locals?modules&importLoaders=1&localIdentName=[name]__[local]___[hash:base64:5]!stylus-loader'
           : 'style-loader!css?modules&importLoaders=1&localIdentName=[name]__[local]___[hash:base64:5]!stylus-loader',
         include: path.join(__dirname, '/src')
+      },
+      {
+        test: /\.(png|jpg)$/, loader: 'url-loader?limit=8192'
       }
     ]
   }

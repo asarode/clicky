@@ -1,0 +1,49 @@
+@import '../../theme'
+
+.levelBadge
+  font-family: $font-family-sub
+  border: 1px solid darken($bg-color-dark, 10%)
+  border-radius: 4px
+  background: $bg-color-dark
+  display: flex
+  align-items: center
+  position: relative
+
+.label
+  display: flex
+  font-size: 12px
+  padding: 2px 8px
+
+.level
+  display: inline-block
+  padding: 2px 8px
+  min-width: 16px
+  border-left: 1px solid darken($bg-color-light, 5%)
+  background: $bg-color-light
+  border-radius: 0 4px 4px 0
+  text-align: center
+
+.levelText
+  position: relative
+  font-size: 22px
+  display: inline-block
+
+.levelAnimation
+  animation-name: growJiggle
+  animation-iteration-count: 2
+  animation-direction: alternate
+  animation-duration: 250ms
+  animation-timing-function: ease
+
+@keyframes growJiggle {
+  0% {
+    transform: scale(1)
+    bottom: 0px
+    color: $font-color-main
+  }
+  100% {
+    transform: scale(2)
+    bottom: 4px
+    color: $font-color-accent
+  }
+}

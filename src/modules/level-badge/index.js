@@ -1,3 +1,4 @@
 import LevelBadge from './level-badge.component'
+import style from './level-badge.styl'
 
-export { LevelBadge }
+export { LevelBadge, style }

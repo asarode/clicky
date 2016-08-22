@@ -13,6 +13,7 @@ import {
   showMultiplier,
   hideMultiplier
 } from 'modules/state/score.reducer'
+import { style } from '.'
 
 const mapStateToProps = (state) => ({
   score: mapScoreState(state.score)
@@ -30,19 +31,29 @@ const mapDispatchToProps = (dispatch) => ({
 @connect(mapStateToProps, mapDispatchToProps)
 export default class App extends Component {
   render () {
-    return <div>
-      <LevelBadge currentLevel={this.props.score.currentLevel} />
+    return <div className={style.app}>
+      <LevelBadge
+        currentLevel={this.props.score.currentLevel}
+        className={style.row} />
       <NextLevelIndicator
         score={this.props.score.score}
-        scoreForNextLevel={this.props.score.scoreForNextLevel} />
-      <ScoreDisplay score={this.props.score.score} />
-      <ClickPiece onClick={this.props.actions.increaseScore} />
+        scoreForCurrentLevel={this.props.score.scoreForCurrentLevel}
+        scoreForNextLevel={this.props.score.scoreForNextLevel}
+        className={style.row} />
+      <ScoreDisplay
+        score={this.props.score.score}
+        isMultiplierActive={this.props.score.isMultiplierActive}
+        className={style.row} />
+      <ClickPiece
+        onClick={this.props.actions.increaseScore}
+        className={style.row} />
       { this.props.score.isMultiplierVisible &&
         <MultiplierWidget
           isActive={this.props.score.isMultiplierActive}
           multiplier={this.props.score.multiplier}
           activateAction={this.props.actions.activateMultiplier}
-          hideAction={this.props.actions.hideMultiplier} />
+          hideAction={this.props.actions.hideMultiplier}
+          className={style.row} />
       }
     </div>
   }

@@ -1,0 +1,22 @@
+@import '../../theme'
+
+.clickButton
+  text-transform: uppercase
+  background: none
+  border: none
+  outline: none
+  font-family: $font-family-main
+  font-size: 74px
+  cursor: pointer
+  padding: 8px
+  border-radius: 12px
+  background: $font-color-main
+  color: $font-color-accent
+  transform: scale(1) rotate(0deg)
+  transition: all 20ms ease
+
+  &:active.variantA
+    transform: scale(0.95) rotate(1deg)
+
+  &:active.variantB
+    transform: scale(0.95) rotate(-1deg)

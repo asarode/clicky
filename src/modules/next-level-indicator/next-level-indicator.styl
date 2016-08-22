@@ -1,0 +1,49 @@
+@import '../../theme'
+
+.label
+  display: flex
+  justify-content: space-between
+
+.headLabel,
+.tailLabel
+  font-family: $font-family-sub
+  font-size: 12px
+
+.meter
+  display: flex
+  width: 400px
+  height: 8px
+
+.meterTick
+  display: flex
+  flex: 1
+  border: 1px solid $font-color-main
+  border-left: none
+  background: rgba($font-color-accent, 0)
+
+  &:first-child
+    border-left: 1px solid $font-color-main
+    border-radius: 2px 0 0 2px
+
+  &:last-child
+    border-right: 1px solid $font-color-main
+    border-radius: 0 2px 2px 0
+
+.meterTickFilled
+  background: $font-color-accent
+
+.meterAnimation
+  animation-name: blinkMeter
+  animation-iteration-count: 6
+  animation-direction: alternate
+  animation-duration: 83ms
+  animation-timing-function: ease
+
+@keyframes blinkMeter {
+  0% {
+    background: rgba($font-color-accent, 0)
+  }
+  100% {
+    background: rgba($font-color-accent, 0.5)
+  }
+}

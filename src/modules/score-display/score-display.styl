@@ -1,0 +1,43 @@
+@import '../../theme'
+
+.scoreText
+  font-family: $font-family-main
+  font-size: 48px
+  text-shadow:
+    -2px -2px 0 rgba($font-color-main, 0),
+    2px -2px 0 rgba($font-color-main, 0),
+    -2px 2px 0 rgba($font-color-main, 0),
+    2px 2px 0 rgba($font-color-main, 0);
+
+.multiplierActive
+  animation-name: glowBabyGlow
+  animation-iteration-count: infinite
+  animation-direction: alternate
+  animation-duration: 1500ms
+  animation-timing-function: linear
+  text-shadow:
+    -2px -2px 0 $font-color-main,
+    2px -2px 0 $font-color-main,
+    -2px 2px 0 $font-color-main,
+    2px 2px 0 $font-color-main;
+
+@keyframes glowBabyGlow {
+  0% {
+    color: lightness(red, 90%)
+  }
+  20% {
+    color: lightness(yellow, 90%)
+  }
+  40% {
+    color: lightness(green, 90%)
+  }
+  60% {
+    color: lightness(blue, 90%)
+  }
+  80% {
+    color: lightness(pink, 90%)
+  }
+  100% {
+    color: lightness(red, 90%)
+  }
+}
